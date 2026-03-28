@@ -27,6 +27,15 @@ const User = require('./models/userSchema');
 const Products = require('./models/productSchema');
 const userSchema = require('./models/userSchema');
 
+function isLoggedIn(req,res,next){
+    if(req.cookies.token === ""){
+        req.user = null;
+    } else{
+        req.user = req.cookies.token
+        next();
+    }
+}
+
 // Featured Products
 
 app.get('/featuredproducts', async (req, res) => {
@@ -129,20 +138,19 @@ app.post('/admin/login', async (req, res) => {
 
 // Cart
 
-app.get('/cart', async (req, res) => {
-    if (!req.cookies.token) {
-        return res.status(400).json({
-            success: false,
-            message: "User does not exist!"
+app.get('/cart', isLoggedIn, async (req, res) => {
+    if (!req.user) {
+        return res.json({
+            isLoggedIn : false,
+            data : []
         })
     }
     const decoded = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
-    const {CartProducts} = await User.findOne({ email: decoded.email });
+    const user = await User.findOne({ email: decoded.email });
     return res.status(200).json({
         success: true,
-        data: CartProducts
+        data: user.CartProducts
     })
-
 })
 
 app.post('/removefromcart', async (req, res) => {

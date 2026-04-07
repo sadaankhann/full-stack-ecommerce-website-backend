@@ -8,7 +8,7 @@ require('dotenv').config();
 
 const cors = require('cors');
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://techon-beta.vercel.app',
     credentials: true
 }));
 

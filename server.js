@@ -24,9 +24,9 @@ const jwt = require('jsonwebtoken');
 
 const bcrypt = require('bcrypt');
 
-const User = require('./models/userSchema');
-const Products = require('./models/productSchema');
-const userSchema = require('./models/userSchema');
+const { Products, User } = require('./config/db');
+
+// Ab Product.find() aur User.find() properly kaam karega
 
 function isLoggedIn(req,res,next){
     if(req.cookies.token === ""){
@@ -249,12 +249,10 @@ async function connectToMongoDB(){
     }
 }
 
-app.use((req,res,next)=>{
-    if(!isConnected){
-        connectToMongoDB();
-    }
+app.use(async (req, res, next) => {
+    await connectToMongoDB();
     next();
-})
+});
 
 // app.listen(5000, () => console.log('Server running on http://localhost:5000'));
 

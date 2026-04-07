@@ -24,7 +24,7 @@ const jwt = require('jsonwebtoken');
 
 const bcrypt = require('bcrypt');
 
-const { Products, User } = require('./config/db');
+const { Products, User } = require('../config/db');
 
 // Ab Product.find() aur User.find() properly kaam karega
 

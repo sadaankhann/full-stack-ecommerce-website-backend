@@ -1,4 +1,6 @@
 const { User} = require('./config/db');
+const {jwt} = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 const handler = async(req, res) => {
     const checkingIfExist = await User.findOne({ email: req.body.email });

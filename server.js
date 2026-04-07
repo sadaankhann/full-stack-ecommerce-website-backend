@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const mongoose = require('mongoose');
 
 app.use(express.json());
 
@@ -34,6 +35,7 @@ function isLoggedIn(req,res,next){
         req.user = req.cookies.token
         next();
     }
+    next();
 }
 
 // Featured Products
@@ -232,4 +234,28 @@ app.post('/addingintoliked', async(req,res)=>{
     res.json({success : true, data: updating.LikedProducts})
 })
 
-app.listen(5000, () => console.log('Server running on http://localhost:5000'));
+let isConnected = false;
+
+async function connectToMongoDB(){
+    try{
+        await mongoose.connect(process.env.MONGO_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        });
+        isConnected = true;
+        console.log("Connected to MongoDB");
+    } catch(err){
+        console.error("Error connecting to MONGODB: ", err);
+    }
+}
+
+app.use((req,res,next)=>{
+    if(!isConnected){
+        connectToMongoDB();
+    }
+    next();
+})
+
+// app.listen(5000, () => console.log('Server running on http://localhost:5000'));
+
+module.exports = app

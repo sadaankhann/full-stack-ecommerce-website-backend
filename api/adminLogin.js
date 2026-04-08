@@ -1,8 +1,11 @@
+import { connectToMongoDB } from './connectToMongoDB';
+
 const { User} = require('./config/db');
 const {jwt} = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 const handler = async(req, res) => {
+    await connectToMongoDB();
     const checkingIfExist = await User.findOne({ email: req.body.email });
     if (!checkingIfExist || !checkingIfExist.isAdmin) return res.status(400).json({ success: false, message: "Account did'nt exist!" })
     const comparison = await bcrypt.compare(req.body.password, checkingIfExist.password);

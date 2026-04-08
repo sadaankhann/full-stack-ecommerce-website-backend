@@ -1,8 +1,13 @@
+import { connectToMongoDB } from './connectToMongoDB';
+
 const { User} = require('./config/db');
 const bcrypt = require('bcrypt');
 const {jwt} = require('jsonwebtoken');
 
 const handler = async(req,res) =>{
+
+    await connectToMongoDB();
+
     const checkingIfExist = await User.findOne({ email: req.body.formData.email });
     
         if (!checkingIfExist) {

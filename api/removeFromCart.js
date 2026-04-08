@@ -1,8 +1,11 @@
+import { connectToMongoDB } from './connectToMongoDB';
+
 const jwt = require('jsonwebtoken');
 const { User} = require('./config/db');
 
 const handler = async(req,res) =>{
     try {
+        await connectToMongoDB();
         const decoded = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
 
         const updating = await User.findOneAndUpdate(

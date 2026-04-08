@@ -1,7 +1,10 @@
+import { connectToMongoDB } from './connectToMongoDB';
+
 const jwt = require('jsonwebtoken');
 const { User} = require('./config/db');
 
 const handler = async(req,res) =>{
+    await connectToMongoDB();
     if (!req.cookies.token) {
             return res.status(400).json({
                 success: false,

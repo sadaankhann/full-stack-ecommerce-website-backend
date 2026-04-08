@@ -1,4 +1,3 @@
-const {userSchema} = require('../config/db.js')
 const mongoose = require('mongoose');
 
 const User = new mongoose.Schema({
@@ -9,4 +8,4 @@ const User = new mongoose.Schema({
     LikedProducts : {type : Array}
 })
 
-module.exports = userSchema.model('User', User);
+module.exports = User

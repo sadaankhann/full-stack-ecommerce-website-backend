@@ -1,7 +1,10 @@
+import { connectToMongoDB } from './connectToMongoDB';
+
 const { Products} = require('./config/db');
 
 const handler = async(req,res) =>{
     try {
+        await connectToMongoDB();
         const products = await Products.find();
         res.json(products);
     }

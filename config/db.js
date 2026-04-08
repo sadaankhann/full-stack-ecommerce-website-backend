@@ -19,4 +19,4 @@ const UserSchema = require('../models/userSchema');
 const Product = productConn.model('Product', ProductSchema);
 const User = userConn.model('User', UserSchema);
 
-module.exports = { Product, User };
+module.exports = { Products: Product, User };

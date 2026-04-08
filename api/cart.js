@@ -1,8 +1,12 @@
+import { connectToMongoDB } from './connectToMongoDB';
+
 const {isLoggedIn} = require('./isLoggedIn');
 const { User} = require('./config/db');
 const {jwt} = require('jsonwebtoken');
 
 const handler = async (req, res) => {
+
+    await connectToMongoDB();
 
     await isLoggedIn();
 

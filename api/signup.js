@@ -1,6 +1,10 @@
+import { connectToMongoDB } from './connectToMongoDB';
+
 const { User} = require('./config/db');
 
 const handler = async(req,res) =>{
+    await connectToMongoDB();
+    
     const checkingIfAlreadyExist = await User.findOne({ email: req.body.formData.email });
     
         if (checkingIfAlreadyExist) {

@@ -1,7 +1,10 @@
+import { connectToMongoDB } from './connectToMongoDB';
+
 const jwt = require('jsonwebtoken');
 const { User} = require('./config/db');
 
 const handler = async (req, res) => {
+    await connectToMongoDB();
     const decoded = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
     const { CartProducts } = await User.findOne({ email: decoded.email });
     const updating = await User.findOneAndUpdate({ email: decoded.email }, {

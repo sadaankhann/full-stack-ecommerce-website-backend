@@ -235,34 +235,34 @@ app.use(cookieParser())
 
 // app.listen(5000, () => console.log('Server running on http://localhost:5000'));
 
-import {cart} from './api/cart'
-import {allProducts} from './api/allProducts'
-import {addingIntoCart} from './api/addingIntoCart'
-import {adminLogin} from './api/adminLogin'
-import {changingQuality} from './api/changingQuality'
-import {featuredProducts} from './api/featuredProducts'
-import {likedProducts} from './api/likedProducts'
-import {login} from './api/login'
-import {removeFromCart} from './api/removeFromCart'
-import {removeFromLiked} from './api/removeFromLiked'
-import {signup} from './api/signup'
+// const cart = require('./api/cart');
+// import {allProducts} from './api/allProducts'
+// import {addingIntoCart} from './api/addingIntoCart'
+// import {adminLogin} from './api/adminLogin'
+// import {changingQuality} from './api/changingQuality'
+// import {featuredProducts} from './api/featuredProducts'
+// import {likedProducts} from './api/likedProducts'
+// import {login} from './api/login'
+// import {removeFromCart} from './api/removeFromCart'
+// import {removeFromLiked} from './api/removeFromLiked'
+// import {signup} from './api/signup'
 
-app.get('/', (req,res)=>{
-    res.send("Done!");
-    console.log("Done!");
-})
+// app.get('/', (req,res)=>{
+//     res.send("Done!");
+//     console.log("Done!");
+// })
 
-app.use('/api/cart', cart);
-app.use('/api/addingIntoCart', addingIntoCart);
-app.use('/api/addingIntoLiked', addingIntoLiked);
-app.use('/api/adminLogin', adminLogin);
-app.use('/api/allProducts', allProducts);
-app.use('/api/changingQuality', changingQuality);
-app.use('/api/featuredProducts', featuredProducts);
-app.use('/api/likedProducts', likedProducts);
-app.use('/api/login', login);
-app.use('/api/removeFromCart', removeFromCart);
-app.use('/api/removeFromLiked', removeFromLiked);
-app.use('/api/signup', signup);
+// app.use('/api/cart', cart);
+// app.use('/api/addingIntoCart', addingIntoCart);
+// app.use('/api/addingIntoLiked', addingIntoLiked);
+// app.use('/api/adminLogin', adminLogin);
+// app.use('/api/allProducts', allProducts);
+// app.use('/api/changingQuality', changingQuality);
+// app.use('/api/featuredProducts', featuredProducts);
+// app.use('/api/likedProducts', likedProducts);
+// app.use('/api/login', login);
+// app.use('/api/removeFromCart', removeFromCart);
+// app.use('/api/removeFromLiked', removeFromLiked);
+// app.use('/api/signup', signup);
 
 module.exports = app;

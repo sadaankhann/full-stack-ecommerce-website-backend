@@ -1,5 +1,4 @@
-import { connectToMongoDB } from './connectToMongoDB';
-
+const connectToMongoDB = require('./connectToMongoDB');
 const { Products} = require('./config/db');
 
 const handler = async(req, res) => {

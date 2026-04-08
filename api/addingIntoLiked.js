@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const { User} = require('./config/db');
-const {connectToMongoDB} = require('./connectToMongoDB');
+const connectToMongoDB = require('./connectToMongoDB');
 
 const handler = async(req,res) =>{
     await connectToMongoDB();

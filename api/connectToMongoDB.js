@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 let productConnection;
 let userConnection;
 
-export async function connectToMongoDB() {
+async function connectToMongoDB() {
   try {
     if (!productConnection) {
       productConnection = await mongoose.createConnection(process.env.MONGO_PRODUCT_URI, {
@@ -25,3 +25,5 @@ export async function connectToMongoDB() {
     console.error("Error connecting to MongoDB:", error);
   }
 }
+
+export default connectToMongoDB();

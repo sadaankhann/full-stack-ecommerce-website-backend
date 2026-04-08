@@ -1,5 +1,6 @@
-import { connectToMongoDB } from './connectToMongoDB';
-
+const connectToMongoDB = require('./connectToMongoDB');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const { User} = require('./config/db');
 
 const handler = async(req,res) =>{

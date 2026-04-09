@@ -1,3 +1,4 @@
+const serverless = require('serverless-http');
 const express = require('express');
 const app = express();
 
@@ -261,4 +262,4 @@ app.use('/api/removeFromCart', removeFromCart);
 app.use('/api/removeFromLiked', removeFromLiked);
 app.use('/api/signup', signup);
 
-module.exports = app;
+module.exports = serverless(app);

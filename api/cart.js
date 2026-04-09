@@ -7,9 +7,7 @@ const handler = async (req, res) => {
 
     await connectToMongoDB();
 
-    await isLoggedIn();
-
-    if (!req.user) {
+    if (!isLoggedIn(req)) {
         return res.json({
             isLoggedIn: false,
             data: []

@@ -16,7 +16,7 @@ const ProductSchema = require('../models/productSchema');
 const UserSchema = require('../models/userSchema');
 
 // 3️⃣ Models ko connections ke saath attach karo
-const Product = productConn.model('Product', ProductSchema);
+const Products = productConn.model('Product', ProductSchema);
 const User = userConn.model('User', UserSchema);
 
-module.exports = { Product, User };
+module.exports = { Products, User };

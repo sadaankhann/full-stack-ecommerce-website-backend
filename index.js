@@ -7,7 +7,7 @@ require('dotenv').config();
 
 const cors = require('cors');
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: true,
     credentials: true
 }));
 
@@ -246,7 +246,7 @@ const login = require('./api/login')
 const removeFromCart = require('./api/removeFromCart')
 const removeFromLiked = require('./api/removeFromLiked')
 const signup = require('./api/signup');
-const { default: mongoose } = require('mongoose');
+const addingIntoLiked = require('./api/addingIntoLiked')
 
 app.use('/api/cart', cart);
 app.use('/api/addingIntoCart', addingIntoCart);
@@ -260,34 +260,5 @@ app.use('/api/login', login);
 app.use('/api/removeFromCart', removeFromCart);
 app.use('/api/removeFromLiked', removeFromLiked);
 app.use('/api/signup', signup);
-
-let isConnectedUsers = false;
-let isConnectedProducts = false;
-
-async function connectToMongoDB() {
-    try {
-        if (!isConnectedUsers) {
-            const conn = mongoose.createConnection(process.env.MONGO_USERS_URI);
-            conn.on('connected', () => {
-                isConnectedUsers = true;
-            });
-        }
-        if(!isConnectedProducts){
-            const conn = mongoose.createConnection(process.env.MONGO_PRODUCTS_URI);
-            conn.on('connected', () => {
-                isConnectedProducts = true;
-            });
-        }
-    } catch(err){
-        console.err('Something went wrong!')
-    }
-}
-
-app.use((req,res,next)=>{
-    if(!isConnectedProducts || !isConnectedUsers){
-        connectToMongoDB();
-    }
-    next();
-})
 
 module.exports = app;

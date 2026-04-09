@@ -1,3 +1,4 @@
-export default function isLoggedIn(req) {
+const isLoggedIn = (req) => {
     return !!req.cookies.token;
 }
+module.exports = isLoggedIn;

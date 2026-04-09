@@ -11,4 +11,5 @@ const handler = async(req, res) => {
         res.status(500).json({ error: "Something went wrong!" });
     }
 }
-export default handler;
+
+module.exports = handler;

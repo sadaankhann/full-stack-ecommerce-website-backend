@@ -26,4 +26,4 @@ async function connectToMongoDB() {
   }
 }
 
-export default connectToMongoDB;
+module.exports = handler;

@@ -268,8 +268,6 @@
 
 
 const express = require('express');
-const serverless = require('serverless-http');
-const mongoose = require('mongoose');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
@@ -316,4 +314,4 @@ app.use('/api/signup', signup)
 // app.listen(5000)
 
 // ✅ EXPORT SERVERLESS
-module.exports = serverless(app);
+module.exports = app;

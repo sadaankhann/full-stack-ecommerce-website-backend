@@ -299,19 +299,18 @@ const removeFromLiked = require('./api/removeFromLiked');
 const signup = require('./api/signup');
 
 // ✅ ROUTES USE
-app.use('/api/cart', cart);
-app.use('/api/addingIntoCart', addingIntoCart);
-app.use('/api/addingIntoLiked', addingIntoLiked);
-app.use('/api/adminLogin', adminLogin);
-app.use('/api/allProducts', allProducts);
-app.use('/api/changingQuality', changingQuality);
-app.use('/api/featuredProducts', featuredProducts);
-app.use('/api/likedProducts', likedProducts);
-app.use('/api/login', login);
-app.use('/api/removeFromCart', removeFromCart);
-app.use('/api/removeFromLiked', removeFromLiked);
-app.use('/api/signup', signup);
-
+app.use('/controller/cart', cart);
+app.use('/controller/addingIntoCart', addingIntoCart);
+app.use('/controller/addingIntoLiked', addingIntoLiked);
+app.use('/controller/adminLogin', adminLogin);
+app.use('/controller/allProducts', allProducts);
+app.use('/controller/changingQuality', changingQuality);
+app.use('/controller/featuredProducts', featuredProducts);
+app.use('/controller/likedProducts', likedProducts);
+app.use('/controller/login', login);
+app.use('/controller/removeFromCart', removeFromCart);
+app.use('/controller/removeFromLiked', removeFromLiked);
+app.use('/controller/signup', signup)
 
 // ❌ REMOVE THIS (Vercel pe allowed nahi)
 // app.listen(5000)

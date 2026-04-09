@@ -285,18 +285,18 @@ app.use(cors({
 app.use(cookieParser());
 
 // ✅ ROUTES IMPORT (FIXED)
-const cart = require('./api/cart');
-const allProducts = require('./api/allProducts');
-const addingIntoCart = require('./api/addingIntoCart');
-const addingIntoLiked = require('./api/addingIntoLiked'); // ⚠️ missing tha
-const adminLogin = require('./api/adminLogin');
-const changingQuality = require('./api/changingQuality');
-const featuredProducts = require('./api/featuredProducts');
-const likedProducts = require('./api/likedProducts');
-const login = require('./api/login');
-const removeFromCart = require('./api/removeFromCart');
-const removeFromLiked = require('./api/removeFromLiked');
-const signup = require('./api/signup');
+const cart = require('../../api/cart');
+const allProducts = require('../../api/allProducts');
+const addingIntoCart = require('../../api/addingIntoCart');
+const addingIntoLiked = require('../../api/addingIntoLiked'); // ⚠️ missing tha
+const adminLogin = require('../../api/adminLogin');
+const changingQuality = require('../../api/changingQuality');
+const featuredProducts = require('../../api/featuredProducts');
+const likedProducts = require('../../api/likedProducts');
+const login = require('../../api/login');
+const removeFromCart = require('../../api/removeFromCart');
+const removeFromLiked = require('../../api/removeFromLiked');
+const signup = require('../../api/signup');
 
 // ✅ ROUTES USE
 app.use('/api/cart', cart);

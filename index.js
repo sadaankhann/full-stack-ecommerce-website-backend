@@ -270,6 +270,7 @@
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const env = require('dotenv').config();
 
 const app = express();
 
@@ -310,8 +311,6 @@ app.use('/api/removeFromCart', removeFromCart);
 app.use('/api/removeFromLiked', removeFromLiked);
 app.use('/api/signup', signup)
 
-// ❌ REMOVE THIS (Vercel pe allowed nahi)
-// app.listen(5000)
-
-// ✅ EXPORT SERVERLESS
-module.exports = app;
+app.listen(5000, ()=>{
+    console.log("Server started on port 5000")
+})

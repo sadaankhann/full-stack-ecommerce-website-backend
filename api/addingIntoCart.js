@@ -1,11 +1,8 @@
-const { User } = require('./config/db');
+const { User } = require('../config/db');
 const jwt = require('jsonwebtoken');
-const connectToMongoDB = require('./connectToMongoDB');
 
 const handler = async(req, res) => {
     try {
-
-        await connectToMongoDB();
         
         const decoded = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
 
